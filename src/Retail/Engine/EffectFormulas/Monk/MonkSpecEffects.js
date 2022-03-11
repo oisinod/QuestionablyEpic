@@ -8,6 +8,8 @@ const ID_ESSENCE_FONT = 191840;
 const ID_CHI_JI_GOM = 343819;
 const ID_SOOTHING_BREATH = 343737;
 const ID_ENVELOPING_BREATH_ID = 325209;
+const ID_FLS_EFHOT = 344006;
+const ID_FLS = 345727;
 
 export const getMonkSpecEffect = (effectName, player, contentType) => {
   let bonus_stats = {};
@@ -45,12 +47,13 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
 
   else if (effectName === "Ancient Teachings of the Monastery") {
     const essenceFontCPM = player.getSpellCPM(ID_ESSENCE_FONT, contentType);
-    const dpsDuringDuration = 1450; // this is a 75% parse
+    const dpsDuringDuration = 1710; // this is a 75% parse
+    const percentDPSApplied = 0.75; // Excluse things that don't apply to AtotM
     const multiplier = 2.5;
-    const buffUptime = Math.min(1, (12 * essenceFontCPM) / 60); // While the buff lasts 15s, the Essence Font channel lasts 3.
-    const expectedOverhealing = 0.3;
+    const buffUptime = Math.min(1, (15 * essenceFontCPM) / 60); // Buff is given at the end of EF channel, so always gets full 15s
+    const expectedOverhealing = 0.4; // Overhealing to match spell DB
     
-    bonus_stats.hps = buffUptime * multiplier * dpsDuringDuration * (1 - expectedOverhealing);
+    bonus_stats.hps = buffUptime * multiplier * percentDPSApplied * dpsDuringDuration * (1 - expectedOverhealing);
   } else if (effectName === "Clouded Focus") {
     // Do Math
     bonus_stats.hps = 0;
@@ -125,11 +128,28 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
     
     bonus_stats.hps = ctaEnvbHealing + healingDueToBoost + chijiGOMHealing;
   } else if(effectName === "Faeline Harmony") {
-    //TODO this should be rougly 2x the stomps and 2x the ef healing from stomp (all queryable)
-    //TODO also look at logs find up time on 8% healing buff accross the raid
-    //TODO multiply that by hps zzz
+    // Number of extra casts due to having legendary.
+    // TODO: If already using the legendary set this to 0.
+    const expectedFLSCPM = 6;
+    const extraCastMulti = 0.6;
+    let directHealingBonus = 0;
+    if (player.getSpellCasts(ID_FLS, contentType)) directHealingBonus += player.getSpellCasts(ID_FLS, contentType) * extraCastMulti;
+    if (player.getSpellCasts(ID_FLS_EFHOT, contentType)) directHealingBonus += player.getSpellCasts(ID_FLS_EFHOT, contentType) * extraCastMulti;
+    
+    // Get an approximation of healing from FLS and how many extra you get from the legendary itself (assuming you weren't using it before)
+    const oneFLS = (0.416 * 0.45 + 0.472 * player.getStatMultiplier("HASTE") * 0.75) * player.activeStats.intellect * player.getStatMultiplier("CRITVERS") * 5; 
+    const estimatedBonusCPM = expectedFLSCPM / 2; // 6 CPM, 3 from legendary bonus
+    if (directHealingBonus < oneFLS * estimatedBonusCPM / 60) directHealingBonus = oneFLS * estimatedBonusCPM / 60;
 
-    bonus_stats.hps = -1;
+    let flsCPM = 0;
+    if (player.getSpellCPM(ID_FLS, contentType)) flsCPM += player.getSpellCPM(ID_FLS, contentType) * (1 + extraCastMulti);
+    if (flsCPM < expectedFLSCPM) flsCPM = expectedFLSCPM; // Set to 6 avg if not being used at all
+
+    const targetsHit = contentType === "Raid" ? 5/20 : 3/5; // Optimistc targets for dungeon, factors hitting tank being more value.
+    const wastage = 0.7; // 30% of buff is wasted
+    const buffHealingBonus = player.getHPS(contentType) * wastage * (0.08 * targetsHit * convertPPMToUptime(flsCPM, 10));
+
+    bonus_stats.hps = buffHealingBonus + directHealingBonus;
   } else if (effectName === "Bountiful Brew") {
     //TODO apply conduit
 

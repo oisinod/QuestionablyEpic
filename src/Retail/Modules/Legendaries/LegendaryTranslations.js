@@ -2122,34 +2122,34 @@ export const legendaryNameTranslator = (legendaryEffectName) => {
           name: "Clouded Focus",
           slot: "Neck or Wrist",
           desc:
-            "Healing with Enveloping Mists or Vivify while channeling Soothing Mists increases their healing done by 15% and reduces their mana cost by 15%. Stacks up to 3 times. When your Soothing Mists channel ends, this effect is cancelled.",
+            "Healing with Enveloping Mists or Vivify while channeling Soothing Mists increases their healing done by 20% and reduces their mana cost by 20%. Stacks up to 3 times. When your Soothing Mists channel ends, this effect is cancelled.",
           droploc: "Torghast, Fracture Chambers, Layer 3+",
         },
         de: {
           name: "Umwölkter Fokus",
           slot: "Hals, Handgelenk",
           desc:
-            "Heilungen mit 'Einhüllender Nebel' oder 'Beleben', während Ihr 'Beruhigender Nebel' kanalisiert, erhöhen die verursachte Heilung der beiden Fähigkeiten um 15% und verringern ihre Manakosten um 15%. Bis zu 3-mal stapelbar. Wenn das Kanalisieren von 'Beruhigender Nebel' endet, wird dieser Effekt aufgehoben.",
+            "Heilungen mit 'Einhüllender Nebel' oder 'Beleben', während Ihr 'Beruhigender Nebel' kanalisiert, erhöhen die verursachte Heilung der beiden Fähigkeiten um 20% und verringern ihre Manakosten um 20%. Bis zu 3-mal stapelbar. Wenn das Kanalisieren von 'Beruhigender Nebel' endet, wird dieser Effekt aufgehoben.",
           droploc: "Skoldushalle, Ebene 3+",
         },
         fr: {
           name: "Focalisateur nébuleux",
           slot: "Cou, Poignets",
           desc:
-            "Lancer Brumes enveloppantes ou Vivifier tout en canalisant Brumes apaisantes augmente les soins prodigués par ces techniques de 15% et réduit leur coût en mana de 15%. Cumulable jusqu’à 3 fois. Quand la canalisation de Brumes apaisantes prend fin, l’effet est annulé.",
+            "Lancer Brumes enveloppantes ou Vivifier tout en canalisant Brumes apaisantes augmente les soins prodigués par ces techniques de 20% et réduit leur coût en mana de 20%. Cumulable jusqu’à 3 fois. Quand la canalisation de Brumes apaisantes prend fin, l’effet est annulé.",
           droploc: "Salle de Skoldus, échelon 3 ou plus",
         },
         ru: {
           name: "Затуманенная концентрация",
           slot: "Шея, Запястья",
           desc:
-            "Когда вы применяете 'Окутывающий туман' или 'Оживить' во время поддержания 'Успокаивающего тумана', исцеление от них усиливается на 15%, а их стоимость снижается на 15%. Суммируется до 3 раз. Действие заканчивается по окончании поддержания 'Успокаивающего тумана'.",
+            "Когда вы применяете 'Окутывающий туман' или 'Оживить' во время поддержания 'Успокаивающего тумана', исцеление от них усиливается на 20%, а их стоимость снижается на 20%. Суммируется до 3 раз. Действие заканчивается по окончании поддержания 'Успокаивающего тумана'.",
           droploc: "Чертоги Скольда, этаж 3+",
         },
         ch: {
           name: "雾云专注",
           slot: "颈部、腕部",
-          desc: "在引导抚慰之雾时使用氤氲之雾或活血术进行治疗，会使这两个技能的治疗效果提高15%、法力消耗降低15%。至多叠加3次。 当你的抚慰之雾引导结束时，该效果取消。",
+          desc: "在引导抚慰之雾时使用氤氲之雾或活血术进行治疗，会使这两个技能的治疗效果提高20%、法力消耗降低20%。至多叠加3次。 当你的抚慰之雾引导结束时，该效果取消。",
           droploc: "斯科杜斯之厅，难度3+",
         },
       };
