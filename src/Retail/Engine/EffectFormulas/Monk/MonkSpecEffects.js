@@ -130,11 +130,11 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
   } else if(effectName === "Faeline Harmony") {
     // Number of extra casts due to having legendary.
     // TODO: If already using the legendary set this to 0.
-    const expectedFLSCPM = 6;
+    const expectedFLSCPM = 4;
     const extraCastMulti = 0.6;
     let directHealingBonus = 0;
-    if (player.getSpellCasts(ID_FLS, contentType)) directHealingBonus += player.getSpellCasts(ID_FLS, contentType) * extraCastMulti;
-    if (player.getSpellCasts(ID_FLS_EFHOT, contentType)) directHealingBonus += player.getSpellCasts(ID_FLS_EFHOT, contentType) * extraCastMulti;
+    if (player.getSpellCasts(ID_FLS, contentType)) directHealingBonus += player.getSpellHPS(ID_FLS, contentType) * extraCastMulti;
+    if (player.getSpellCasts(ID_FLS_EFHOT, contentType)) directHealingBonus += player.getSpellHPS(ID_FLS_EFHOT, contentType) * extraCastMulti;
     
     // Get an approximation of healing from FLS and how many extra you get from the legendary itself (assuming you weren't using it before)
     const oneFLS = (0.416 * 0.45 + 0.472 * player.getStatMultiplier("HASTE") * 0.75) * player.activeStats.intellect * player.getStatMultiplier("CRITVERS") * 5; 
@@ -143,7 +143,7 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
 
     let flsCPM = 0;
     if (player.getSpellCPM(ID_FLS, contentType)) flsCPM += player.getSpellCPM(ID_FLS, contentType) * (1 + extraCastMulti);
-    if (flsCPM < expectedFLSCPM) flsCPM = expectedFLSCPM; // Set to 6 avg if not being used at all
+    if (flsCPM < expectedFLSCPM) flsCPM = expectedFLSCPM; // Set to 4 avg if not being used at all
 
     const targetsHit = contentType === "Raid" ? 5/20 : 3/5; // Optimistc targets for dungeon, factors hitting tank being more value.
     const wastage = 0.7; // 30% of buff is wasted
