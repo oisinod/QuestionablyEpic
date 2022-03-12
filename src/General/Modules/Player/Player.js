@@ -337,7 +337,7 @@ class Player {
         } else if (this.spec === SPEC.DISCPRIEST) {
           statPerc = 1 + (0.108 + this.activeStats.mastery / 25.9 / 100);
         } else if (this.spec === SPEC.MISTWEAVERMONK) {
-          statPerc = 1; // TODO
+          statPerc = 1 + (0.336 + this.activeStats.mastery / 35 * 4.2 / 100); 
         }
         break;
       case "Versatility":
@@ -358,8 +358,8 @@ class Player {
       // Returns a multiplier that includes raw intellect.
       mult = this.getStatPerc("Haste") * this.getStatPerc("Crit") * this.getStatPerc("Versatility") * this.getStatPerc("Mastery") * this.activeStats.intellect;
     } else if (flag === "NOHASTE") {
-      // Returns a multiplier that includes raw intellect.
-      mult = this.getStatPerc("Haste") * this.getStatPerc("Crit") * this.getStatPerc("Versatility") * this.getStatPerc("Mastery") * this.activeStats.intellect;
+      // Returns a multiplier that includes, crit, verse, mastery and raw intellect.
+      mult = this.getStatPerc("Crit") * this.getStatPerc("Versatility") * this.getStatPerc("Mastery") * this.activeStats.intellect;
     } else if (flag === "ALLSEC") {
       // Returns a multiplier that includes all secondaries but NOT intellect.
       mult = this.getStatPerc("Haste") * this.getStatPerc("Crit") * this.getStatPerc("Versatility") * this.getStatPerc("Mastery");
@@ -369,6 +369,12 @@ class Player {
     } else if (flag === "CRITVERS") {
       // Returns a multiplier that includes raw intellect.
       mult = this.getStatPerc("Crit") * this.getStatPerc("Versatility");
+    } else if (flag === "INT") {
+      // Our multiplier consists of whatever is in the stat list array, plus raw intellect.
+      mult *= this.activeStats.intellect;
+      statList.forEach((stat) => {
+        mult *= this.getStatPerc(stat);
+      });
     } else {
       // Our multiplier consists of whatever is in the stat list array.
       statList.forEach((stat) => {
