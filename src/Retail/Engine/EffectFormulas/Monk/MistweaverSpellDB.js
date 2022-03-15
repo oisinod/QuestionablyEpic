@@ -166,9 +166,10 @@ export const MONKSPELLS = {
             const chijiBuff = state.activeBuffs.filter(function (buff) {return buff.name === "Chiji Active"});
             const chijiStacks = (chijiBuff.length > 0 && chijiBuff[0]['stacks'] || 0)            
             state.manaSpent -= chijiStacks / 3 * 5.6
+
+            // Remove Chiji buff stacks.
+            if (chijiBuff.length != 0) chijiBuff.stacks = 0;
         }
-            
-            
     }],
     "Thunder Focus Tea": [{ // TFT
         type: "buff",
