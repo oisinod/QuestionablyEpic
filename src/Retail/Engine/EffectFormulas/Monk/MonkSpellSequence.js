@@ -361,6 +361,12 @@ export const runHeal = (state, spell, spellName, specialMult = 1) => {
     if (checkBuffActive(state.activeBuffs, "Primordial Mending") && !["Ancient Teachings of the Monastery"].includes(spellName) && !["Yulon's Whisper (Initial)"].includes(spellName)) {
         flatHeal = 450;
         T284pcOverhealMultiplier = 1.05;
+
+        let tierhit = 1;
+        if (spell.targets) state.tierhits += 1 * spell.targets;
+        else state.tierhits += 1;
+
+
     }
 
     // Add Bonedust Brew additional mastery healing
@@ -487,7 +493,7 @@ export const runHeal = (state, spell, spellName, specialMult = 1) => {
 export const runCastSequence = (sequence, stats, settings = {}, conduits, runcount = 1) => {
     //console.log("Running cast sequence");
 
-    let state = {t: 0, activeBuffs: [], healingDone: {}, damageDone: {}, conduits: {}, manaSpent: 0, settings: settings, conduits: conduits, T284pcwindow: {}}
+    let state = {t: 0, activeBuffs: [], healingDone: {}, damageDone: {}, conduits: {}, manaSpent: 0, settings: settings, conduits: conduits, T284pcwindow: {}, tierhits: 0}
 
     let nextSpell = 0;
     let tracker = 0; 
@@ -640,6 +646,7 @@ export const runCastSequence = (sequence, stats, settings = {}, conduits, runcou
     state.hps = Math.round(totalHealing / state.sequenceLength * 100)/100;  // Round to 2dp
     state.dps = Math.round(totalDamage / state.sequenceLength * 100)/100;  // Round to 2dp
     state.sequenceLength /= runcount;
+    state.tierhits /= runcount;
     state.totalHealing = Math.round(totalHealing)
     state.total4pcWindow = Math.round(sumValues(state.T284pcwindow))
     state.totalDamage = Math.round(totalDamage)

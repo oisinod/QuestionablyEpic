@@ -4,16 +4,15 @@ import Player from "General/Modules/Player/Player";
 
 
 describe("Test Sequences", () => {
-    
-    //const player = new Player("Mock", "Discipline Priest", 99, "NA", "Stonemaul", "Night Elf");
-    /*player.activeStats = {
+    /*const player = new Player("Mock", "Discipline Priest", 99, "NA", "Stonemaul", "Night Elf");
+    player.activeStats = {
             intellect: 1974,
             haste: 869,
             crit: 445,
             mastery: 451,
             versatility: 528,
             stamina: 1900,
-    } 
+    } */
 
     const activeStats = { // NF Stats
         intellect: 2370,
@@ -121,18 +120,18 @@ describe("Test Sequences", () => {
     const fallenOrderhpmShort = getFOHealing(player) / 1000
     const fallenOrderhpm4pc = (getFOHealing(player4pc) + getLongCloneHealing(player4pc) + venth4pcfobonuspercast)/1000;
     const fallenOrderhpmShort4pc = (getFOHealing(player4pc) + venth4pcfobonuspercastatotm) / 1000
-*/
 
+/*
     test("Legendaries & Soulbinds", () => {
         expect(true).toEqual(true);
     });
-    /*
+    */
     test("Legendaries & Soulbinds", () => {
         
         //covenants["Base"].push(runCastSequence(baseSequence, activeStats3, {"DefaultLoadout": true, "covenant": "None", "legendaries": ["Ancient Teachings of the Monastery"], "misc": ["2T28", "4T28"]}, {}))
         //covenants["Base"].push(runCastSequence(revivaltest, activeStats3, {"DefaultLoadout": true, "covenant": "None", "legendaries": ["Ancient Teachings of the Monastery"], "misc": ["2T28", "4T28"]}, {}))
         //console.log("Base: " + covenants["Base"][0].totalHealing + " (HPM: " + covenants["Base"][0].hpm + "). 4PC Window: " + covenants["Base"][0].total4pcWindow + " (" + Math.round(covenants["Base"][0].total4pcWindow/covenants["Base"][0].totalHealing*1000)/10 + ")%. Damage: " + covenants["Base"][0].totalDamage);
-
+/*
         // Kyrian Chiji Test
         covenants["KyrianPre"].push(runCastSequence(kyrianchijibaseSequence, activeStatsPalegosTest, {"DefaultLoadout": false, "soulbind": "Pelagos", "covenant": "Kyrian", "legendaries": ["Invoker's Delight"], "misc": ["2T28", "4T28", "CTA", "Chiji"]}, {}, 12))
         covenants["KyrianPre"].push(runCastSequence(kyrianChijiSequence, activeStatsPalegosTest, {"DefaultLoadout": false, "soulbind": "Pelagos", "covenant": "Kyrian", "legendaries": ["Invoker's Delight"], "misc": ["2T28", "4T28", "CTA", "Chiji"]}, {}))
@@ -283,7 +282,6 @@ describe("Test Sequences", () => {
         "Double legendary: NL40 - HPS: " + nl240hps + " HPM: " + nl240hpm + " DPS: " + nl240dps + "\n" +
         "NL60 - HPS: " + NL260hps + " HPM: " + NL260hpm + " DPS: " + NL260dps + "\n" +
         "NL90 - HPS: " + NL290hps + " HPM: " + NL290hpm + " DPS: " + NL290dps);
-/*
         // 0 tier - sequence won't be optimized but gives rough idea
         console.log("==pretier==");
         // Kyrian 
@@ -437,6 +435,7 @@ describe("Test Sequences", () => {
         "NL Revival: " + covenants["NL1L"][7].totalHealing + "\n" +
         "NL - HPS: " + nl1lhps + " HPM: " + nl1lhpm + " DPS: " + nl1ldps + " (2 yulon, 3 revival, balanced stats)");
 
+*/
         // 4pc, 2 legendary
         console.log("==4pc double legendary==");
         // Kyrian
@@ -578,6 +577,11 @@ describe("Test Sequences", () => {
         "NL60 - HPS: " + NL260hps + " HPM: " + NL260hpm + " DPS: " + NL260dps + "\n" +
         "NL90 - HPS: " + NL290hps + " HPM: " + NL290hpm + " DPS: " + NL290dps);
 
+        console.log("Kyrian Balanced hits: " + covenants["Kyrian"][0].tierhits + "\n" + 
+            "Venth Balanced hits: " + covenants["Venth"][0].tierhits + "\n" +
+            "NF Crit/Vers hits: " + covenants["Night Fae"][0].tierhits + " - Balanced: " + covenants["Night Fae"][3].tierhits + "\n" +
+            "NL Crit/Vers hits: " + covenants["NL"][0].tierhits + " - Crit/haste: " + covenants["NL"][2].tierhits + " - Balanced: " + covenants["NL"][4].tierhits);
+/*
         console.log("Sequence lengths: " + "\n" + 
         "KyrianPre: " +  covenants["KyrianPre"][0].sequenceLength + "\n" +
         "VenthPre: " +  covenants["VenthPre"][0].sequenceLength + "\n" +
@@ -593,7 +597,5 @@ describe("Test Sequences", () => {
         "Kyrian WoO: " +  covenants["Kyrian"][3].sequenceLength + "\n" +
         "Venth Yulon: " +  covenants["Venth"][1].sequenceLength + "\n" +
         "NF Yulon: " +  covenants["Night Fae"][1].sequenceLength);
-        
-    }) */
-
-})
+        */
+    }) }) 
