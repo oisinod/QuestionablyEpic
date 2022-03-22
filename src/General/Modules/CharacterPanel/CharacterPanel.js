@@ -255,8 +255,8 @@ export default function CharacterPanel(props) {
                                 }}
                               >
                                 {smBreakpoint
-                                  ? "Current Playstyle: " + props.player.getActiveModel(props.contentType).modelName + " - " + t(contentType)
-                                  : "- Current Playstyle: " + props.player.getActiveModel(props.contentType).modelName + " - " + t(contentType)}
+                                  ? "Current Playstyle: " + props.player.getActiveModel(props.contentType).modelName + " - " + props.player.getCovenant() + " (" + t(contentType) + ")"
+                                  : "- Current Playstyle: " + props.player.getActiveModel(props.contentType).modelName + " - " + props.player.getCovenant() + " (" + t(contentType) + ")"}
                               </Typography>
                             </Grid>
                           ) : (

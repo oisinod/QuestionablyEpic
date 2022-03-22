@@ -21,7 +21,7 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
     // avoid double dipping.
     const essenceFontCPM = player.getSpellCPM(191840, contentType) // EF Casts per minute.
     const extraHoT = 0.042 * 2 * 1.05 * player.getStatMultiplier("CRITVERS") * player.getStatPerc("Haste") * player.getInt();  
-    const hotIncrease = 0.042 * 4 * 0.05 * player.getStatMultiplier("CRITVERS") * player.getStatPerc("Haste") * player.getInt();
+    const hotIncrease = 0.042 * 6 * 0.05 * player.getStatMultiplier("CRITVERS") * player.getStatPerc("Haste") * player.getInt();
     // Coefficient x num Ticks x 5% multi x avgHots per EF 
     // We automatically include the Rising Mist extension in the calculation
     const expectedOverhealing = 0.24;
@@ -37,7 +37,7 @@ export const getMonkSpecEffect = (effectName, player, contentType) => {
     // -- This is a draft formula. --
     // We can also sequence this directly if necessary, but the numbers here are already heavily based around that model.
     const singleEvent = 450 * player.getStatMultiplier("CRITVERS"); // The amount of healing from a single 4pc proc.
-    const avgEvents = 90 * player.getStatPerc("Haste"); // Average number of healing events in a 4pc window.
+    const avgEvents = 228 * player.getStatPerc("Haste"); // Average number of healing events in a 4pc window.
     const covMulti = {"night_fae": 1, "venthyr": 1, "necrolord": 1, "kyrian": 1}; // The average multiplier to the 4pc window for the chosen covenant. This is a combination of logs and spell sequencing. 
 
     bonus_stats.hps = singleEvent * avgEvents * covMulti[player.getCovenant()] / 60
