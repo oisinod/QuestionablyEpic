@@ -91,9 +91,10 @@ export const monkDefaultSpecialQueries = (contentType) => {
   return specialQueries;
 };
 
-export const monkDefaultStatWeights = (contentType) => {
+export const monkDefaultStatWeights = (contentType, covenant) => {
   let statWeights = {};
 
+  console.log(covenant);
   statWeights.Raid = {
     intellect: 1,
     haste: 0.59,

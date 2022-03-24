@@ -12,10 +12,10 @@ import { discPriestDefaultSpecialQueries, discPriestDefaultSpellData, discPriest
 import { getRampData, genStatWeights } from "General/Modules/Player/DiscPriest/DiscPriestUtilities";
 
 class CastModel {
-  constructor(spec, contentType, modelID, arrID) {
+  constructor(spec, contentType, modelID, arrID, covenant) {
     this.contentType = contentType;
     this.arrayID = arrID;
-    this.setDefaults(spec, contentType, modelID);
+    this.setDefaults(spec, contentType, modelID, covenant);
   }
 
   spellList = {};
@@ -60,7 +60,7 @@ class CastModel {
     else return 0;
   };
 
-  setDefaults = (spec, contentType, modelID) => {
+  setDefaults = (spec, contentType, modelID, covenant) => {
     this.fightInfo = {
       hps: 11000,
       rawhps: 12940,
@@ -69,6 +69,8 @@ class CastModel {
       reportID: "Default",
       bossName: "Default",
     };
+
+    console.log("Setting defaults: Cov = " + covenant);
 
     let spellList = {};
     let specialQueries = {};
