@@ -381,6 +381,7 @@ export function getTrinketEffect(effectName, player, castModel, contentType, ite
     const totalBonusStat = getProcessedValue(effect.coefficient, effect.table, 265) * effect.duration * effect.ppm / 60;
     // Proc munching is a rarity here since procs can both be up at once. For that reason we'll instead use a more standard duration x ppm / 60 formula.
     // TODO: Apply DR to each proc.
+    console.log("itemLevel: " + getProcessedValue(effect.coefficient, effect.table, 265))
 
     bonus_stats.haste = totalBonusStat / 4;
     bonus_stats.crit = totalBonusStat / 4;

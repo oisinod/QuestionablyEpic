@@ -674,10 +674,11 @@ class Player {
       this.statWeights.DefaultWeights = true; */
     } else if (spec === SPEC.MISTWEAVERMONK) {
       const models = [
-        { identifier: "Raid Default", content: "Raid" },
-        { identifier: "Dungeon Default", content: "Dungeon" },
-        { identifier: "Sinister Teachings", content: "Raid" },
-        { identifier: "Sinister Teachings", content: "Dungeon" },
+        { identifier: "NL / Night Fae", content: "Raid" },
+        { identifier: "NL / Night Fae Dungeon", content: "Dungeon" },
+        { identifier: "Venthyr", content: "Raid" },
+        { identifier: "Venthyr", content: "Dungeon" },
+        { identifier: "Kyrian", content: "Raid" },
       ];
       models.forEach((model, i) => this.castModels.push(new CastModel(spec, model.content, model.identifier, i)));
 

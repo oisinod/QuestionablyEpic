@@ -119,22 +119,29 @@ class CastModel {
       // --- Mistweaver Monk
     } else if (spec === SPEC.MISTWEAVERMONK) {
 
-      if (modelID === "Raid Default") {
-        this.modelName = "Raid Default"
+      if (modelID === "NL / Night Fae") {
+        this.modelName = "NL / Night Fae"
         spellList = monkDefaultSpellData("Raid");
         specialQueries = monkDefaultSpecialQueries("Raid");
         this.baseStatWeights = monkDefaultStatWeights("Raid");
         this.fightInfo.dps = 1200;
       }
-      else if (modelID === "Dungeon Default") {
-        this.modelName = "Dungeon Default"
+      else if (modelID === "Kyrian") {
+        this.modelName = "Kyrian"
+        spellList = monkDefaultSpellData("Raid");
+        specialQueries = monkDefaultSpecialQueries("Raid");
+        this.baseStatWeights = monkDefaultStatWeights("Raid");
+        this.fightInfo.dps = 1200;
+      }
+      else if (modelID === "NL / Night Fae Dungeon") {
+        this.modelName = "NL / Night Fae"
         spellList = monkDefaultSpellData("Dungeon");
         specialQueries = monkDefaultSpecialQueries(contentType);
         this.baseStatWeights = monkDefaultStatWeights("Dungeon");
         this.fightInfo.dps = 2100;
       }
-      else if (modelID === "Sinister Teachings") {
-        this.modelName = "Sinister Teachings"
+      else if (modelID === "Venthyr") {
+        this.modelName = "Venthyr"
         spellList = monkSinSpellData(contentType);
         specialQueries = monkSinSpecialQueries(contentType);
         this.baseStatWeights = monkSinStatWeights("Raid");

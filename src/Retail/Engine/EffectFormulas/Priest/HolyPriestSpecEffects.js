@@ -9,11 +9,11 @@ export const getHolyPriestSpecEffect = (effectName, player, contentType) => {
   // Tier Sets
   if (effectName === "HPriest T28-2") {
     // 
-    bonus_stats.hps = 0
+    bonus_stats.hps = 1000
   }
   else if (effectName === "HPriest T28-4") {
     // 
-    bonus_stats.hps = 0
+    bonus_stats.hps = 1000
   }
   else if (effectName === "Vision of Unending Growth") {
   }
