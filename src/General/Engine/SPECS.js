@@ -1,5 +1,6 @@
 const SPEC = {
   RESTODRUID: "Restoration Druid",
+  PRESEVOKER: "Preservation Evoker",
   MISTWEAVERMONK: "Mistweaver Monk",
   RESTOSHAMAN: "Restoration Shaman",
   HOLYPRIEST: "Holy Priest",

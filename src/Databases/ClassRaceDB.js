@@ -25,6 +25,10 @@ export const classRaceDB = {
     races: ["Races.Night Elf", "Races.Worgen", "Races.Kul Tiran", "Races.Tauren", "Races.Troll", "Races.Highmountain Tauren", "Races.Zandalari Troll"],
     gameType: "Retail",
   },
+  "Preservation Evoker": {
+    races: ["Races.Night Elf", "Races.Worgen", "Races.Kul Tiran", "Races.Tauren", "Races.Troll", "Races.Highmountain Tauren", "Races.Zandalari Troll"],
+    gameType: "Retail",
+  },
 
   /* --------------------------------------- Burning Crusade -------------------------------------- */
   "Restoration Druid BC": {
