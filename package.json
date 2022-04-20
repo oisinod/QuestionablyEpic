@@ -43,6 +43,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "staging": "cross-env REACT_APP_ENV=staging npm start",
     "start": "react-scripts --max_old_space_size=4096 start",
     "build": "react-scripts build --max_old_space_size=4096",
     "test": "react-scripts test --env=jsdom",

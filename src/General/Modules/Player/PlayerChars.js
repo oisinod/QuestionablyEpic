@@ -15,6 +15,7 @@ import BCPlayer from "./BCPlayer";
 class PlayerChars {
   constructor() {
     // Check our local storage for our characters.
+    console.log(process.env.NODE_ENV);
     let playerChars = JSON.parse(ls.get("allChar")) || [];
 
     //
@@ -53,6 +54,8 @@ class PlayerChars {
     this.allChar = charArray;
     /*this.allChar = JSON.parse(ls.get("allChar")) || [new Player("VoulkThree", "Restoration Druid", 0)]; // This is the previous code. To be eventually removed */
     this.activeChar = ls.get("activeChar") || 0;
+
+
   }
 
   allChar = []; // An array of all our characters.
