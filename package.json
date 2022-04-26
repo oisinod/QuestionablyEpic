@@ -37,10 +37,12 @@
     "reactstrap": "^8.6.0",
     "recharts": "^1.8.5",
     "simple-oauth2": "^4.1.0",
+    "source-map-explorer": "^2.5.2",
     "typescript": "^3.9.7",
     "workerize": "^0.1.8"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts --max_old_space_size=4096 start",
